@@ -278,11 +278,8 @@ class LambdaHandler:
             result = app_function(event, context) if varargs else app_function()
         elif num_args == 1:
             result = app_function(event, context) if varargs else app_function(event)
-        elif num_args == 2:
-            result = app_function(event, context)
         else:
-            raise RuntimeError("Function signature is invalid. Expected a function that accepts at most "
-                               "2 arguments or varargs.")
+            result = app_function(event, context)
         return result
 
     def get_function_for_aws_event(self, record):
